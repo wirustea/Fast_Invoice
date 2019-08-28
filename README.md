@@ -10,7 +10,7 @@ Our model is based on semantic segmentation and center points prediction. It is 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
 
 
-<img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "50%" height = "50%">
+<img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = 50% height = 50%>
 
 <!-- <figure class="half">
     <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200">
