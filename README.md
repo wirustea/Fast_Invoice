@@ -18,7 +18,7 @@ on added-value tax invoice dataset
 | FastInvoice_Res11 | 64 | - | - | YES | - | - |
 | Lite-FastInvoice_Res11 | 64 | - | - | YES | - | - |
 
-on multi-invoice dataset
+on multi-invoice(added-value-tax and taxi) dataset
 
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
 | :--: | :--: | :--: | :--: | :--: | :--: |:--: |
@@ -27,14 +27,19 @@ on multi-invoice dataset
 ## Test
 first download pretrained models, and move to folder **PROJECT_ROOT/pretrained_model**.
 ````bash
-python test.py IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME --pretrained_model PTH_PATH
+python test.py --path IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME --pretrained_model PTH_NAME
 ````
-1. if MODEL_NAME is not given, it will use FastInvoice_Res11 as default.
-2. if gpu is avilable, add --use_cuda.
-3. you can find bounding boxes for every image in folder **PROJECT_ROOT/result**
+1. if MODEL_NAME is not given, it will use **FastInvoice_Res11** as default.
+2. if gpu is avilable, add option **--use_gpu**
+3. visulalize bounding boxes on input, add option **--visualize**
+4. you can find bounding boxes and visualized version for every image in folder **PROJECT_ROOT/result**
 
-just want to call detection function in projects
-
+if you just want to call detection function in projects
+````bash
+from test import Detection
+detection = Detection(model_name:str, pretrained_model:str, on_gpu=False)
+test.detection.detect(input:numpy.ndarray, visualize:bool)
+````
 
 ## Train
 ### Data preparation
