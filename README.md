@@ -12,11 +12,14 @@ This model
 
 ## Pretrained models
 on added-value tax invoice dataset
+
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
 | :--: | :--: | :--: | :--: | :--: | :--: |:--: |
 | FastInvoice_Res11 | 64 | - | - | YES | - | - |
 | Lite-FastInvoice_Res11 | 64 | - | - | YES | - | - |
+
 on multi-invoice dataset
+
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
 | :--: | :--: | :--: | :--: | :--: | :--: |:--: |
 | FastInvoice_Res18 | 64 | - | - | YES | - | - |
