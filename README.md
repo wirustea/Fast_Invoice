@@ -13,18 +13,18 @@ This model
 ## Pretrained models
 on added-value tax invoice dataset
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
-| :--: | :--: | :--: | :--: | :--: | :--: |:--: | :--: |
-| FastInvoice_Res11 | 64 |  |  | YES |  |  |
-| Lite-FastInvoice_Res11 | 64 |  |  | YES |  |  |
+| :--: | :--: | :--: | :--: | :--: | :--: |:--: |
+| FastInvoice_Res11 | 64 | - | - | YES | - | - |
+| Lite-FastInvoice_Res11 | 64 | - | - | YES | - | - |
 on multi-invoice dataset
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
-| :--: | :--: | :--: | :--: | :--: | :--: |:--: | :--: |
-| FastInvoice_Res18 | 64 |  |  | YES |  |  |
+| :--: | :--: | :--: | :--: | :--: | :--: |:--: |
+| FastInvoice_Res18 | 64 | - | - | YES | - | - |
 
 ## Test
 first download pretrained models, and move to folder **PROJECT_ROOT/pretrained_model**.
 ````bash
-test.py IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME --pretrained_model PTH_PATH
+python test.py IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME --pretrained_model PTH_PATH
 ````
 1. if MODEL_NAME is not given, it will use FastInvoice_Res11 as default.
 2. if gpu is avilable, add --use_cuda.
