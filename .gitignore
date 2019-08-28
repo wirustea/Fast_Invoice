@@ -1,4 +1,4 @@
-/pretrained_model
+/pretrained_model/*.pth
 /result
 __pycache__
 .DS_Store

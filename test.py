@@ -146,7 +146,7 @@ mapping = dict(zip(mapping.values(),mapping.keys()))
 ###
 
 class Detection():
-    def __init__(self,model_name:str,pretrained_model:str,on_gpu=False,center_points_thred=0.4,_nms_kernel=3,topK=100):
+    def __init__(self,model_name:str,pretrained_model:str,on_gpu=False,center_points_thred=0.3,_nms_kernel=3,topK=110):
         self.net = get_model(model_name,pretrained_model,on_gpu)
         self.on_gpu = on_gpu
         self.center_points_thred= center_points_thred
@@ -207,14 +207,15 @@ class Detection():
             names = os.listdir(input)
             dd = {}
             for name in names:
-                path = os.path.join(input,name)
-                image = np.array(Image.open(path).convert('RGB'))
-                if visualize:
-                    to_show,bbox = self._detect(image,draw_rects_on_image=True)
-                    Image.fromarray(to_show).save(os.path.join('result',name))
-                else:
-                    bbox = self._detect(image)
-                dd[name] = bbox
+                if name.split('.')[-1] in ['png','jpg','jpeg','PNG','JPG','JPEG']:
+                    path = os.path.join(input,name)
+                    image = np.array(Image.open(path).convert('RGB'))
+                    if visualize:
+                        to_show,bbox = self._detect(image,draw_rects_on_image=True)
+                        Image.fromarray(to_show).save(os.path.join('result',name))
+                    else:
+                        bbox = self._detect(image)
+                    dd[name] = bbox
             with open('result/bbox.json','w') as f:
                 json.dump(dd,f)
 
