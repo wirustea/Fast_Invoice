@@ -1,14 +1,18 @@
 # Fast-Invoice
-A fast model for multi-scenario multi-class invoices detection (only localization)
+A fast&simple model for multi-scenario multi-class invoices detection (only localization)
 
 ## Introduction
-This model 
+This model is designed for information localization on **invoice-like images** which have dense, very long, blurred and overlapped text. There were many excellent models for scene text detection (), but they are not very suitable for this high accuracy required and classification task. So we designed our model for various kinds of invoices.
+Our model is based on semantic segmentation and center points prediction. It is composed of an Encoder and a Decoder. Encoder is for feature extraction, while Decoder is for pixel classification, center points prediction, and distance estimation. For most data, our model could precisely find center points. So non-maxima suppression for bounding box can be removed. We have provide pretrained models for added-value tax and taxi invoice. Lite models will be released soon.
 
 ## Quick start
 ### Install
-1. Install PyTorch>=0.4.1 following the [official instructions](https://pytorch.org/)
-2. git clone https://github.com/wirustea/Fast_Invoice
-3. nstall dependencies: pip install -r requirements.txt
+- Install PyTorch>=0.4.1 following the [official instructions](https://pytorch.org/)
+
+````bash
+git clone https://github.com/wirustea/Fast_Invoice
+pip install -r requirements.txt
+````
 
 ## Pretrained models
 on added-value tax invoice dataset
@@ -35,7 +39,7 @@ python test.py --path IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME 
 4. you can find bounding boxes and visualized version for every image in folder **PROJECT_ROOT/result**
 
 if you just want to call detection function in projects
-````bash
+````python
 from test import Detection
 detection = Detection(model_name:str, pretrained_model:str, on_gpu=False)
 test.detection.detect(input:numpy.ndarray, visualize:bool)
@@ -43,7 +47,7 @@ test.detection.detect(input:numpy.ndarray, visualize:bool)
 
 ## Train
 ### Data preparation
-Your directory tree should be look like this:
+Your directory tree and label file(json) should be look like this:
 ````bash
 $PROJECT_ROOT/dataset
 ├── 512_train
