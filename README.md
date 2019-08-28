@@ -9,10 +9,15 @@ Our model is based on semantic segmentation and center points prediction. It is 
 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
 
-<figure class="half">
+<figure>
+    <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg">
+    <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo2.jpg">
+</figure> 
+
+<!-- <figure class="half">
     <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200">
     <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo2.jpg" width = "200" height = "200">
-</figure>
+</figure> -->
 
 ## Quick start
 ### Install
