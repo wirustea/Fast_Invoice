@@ -5,8 +5,11 @@ A fast&simple model for multi-scenario multi-class invoices detection (only loca
 This model is designed for information localization on **invoice-like images** which have dense, very long, blurred and overlapped text. There were many excellent models for scene text detection (), but they are not very suitable for this high accuracy required and classification task. So we designed our model for various kinds of invoices.
 Our model is based on semantic segmentation and center points prediction. It is composed of an Encoder and a Decoder. Encoder is for feature extraction, while Decoder is for pixel classification, center points prediction, and distance estimation. For most data, our model could precisely find center points. So non-maxima suppression for bounding box can be removed. We have provide pretrained models for added-value tax and taxi invoice. Lite models will be released soon.
 
+## Demo
+ Defferent color means defferent class, it can detect as many items as it can
+
 ![demo1](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo1.jpg)
-![demo2 defferent color means defferent class](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo2.jpg)
+![demo2](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo2.jpg)
 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
 
@@ -33,7 +36,7 @@ on added-value tax invoice dataset
 
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
 | :--: | :--: | :--: | :--: | :--: | :--: |:--: |
-| FastInvoice_Res11 | 64 | - | - | YES | - | [BaiDuYun (key:ey4g)](https://pan.baidu.com/s/1UKKf_N_uj8suse3lm2L8Mg) |
+| FastInvoice_Res11 | 64 | - | - | YES | 78.4% | [BaiDuYun (key:ey4g)](https://pan.baidu.com/s/1UKKf_N_uj8suse3lm2L8Mg) |
 | Lite-FastInvoice_Res11 | 64 | - | - | YES | - | - |
 
 on multi-invoice(added-value-tax and taxi) dataset
@@ -61,7 +64,7 @@ detection = Detection(model_name:str, pretrained_model:str, on_gpu=False)
 test.detection.detect(input:numpy.ndarray, visualize:bool)
 ````
 
-## Train
+## Train (updating)
 ### Data preparation
 Your directory tree and label file(json) should be look like this:
 ````bash
@@ -100,5 +103,5 @@ mapping.json
     'TAG_N':N
 }
 ````
-### labeling tools
-we provide a tool for invoice data labeling .
+### labeling tools (updating)
+we provide a tool for invoice data labeling
