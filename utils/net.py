@@ -50,13 +50,12 @@ def _topk_channel(scores, K=64):
 
     return topk_scores, topk_inds, topk_ys, topk_xs
 
-def center_points(hmap,mask,thred=0.4):
+def center_points(hmap,mask,thred=0.2,topK=70,kernel_size=3):
 
     heat = _nms(hmap.unsqueeze(0).unsqueeze(0), kernel=3)
     # print(heat.size(),mask.size())
     masked_heat = heat * (mask!=0).float()
-    scores, inds, ys, xs = _topk_channel(masked_heat, K=70)
-
+    scores, inds, ys, xs = _topk_channel(masked_heat, K=topK)
     st = 0
     for s in scores[0, 0]:
         if s >= thred:

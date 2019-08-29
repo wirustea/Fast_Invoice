@@ -5,7 +5,8 @@ A fast&simple model for multi-scenario multi-class invoices detection (only loca
 This model is designed for information localization on **invoice-like images** which have dense, very long, blurred and overlapped text. There were many excellent models for scene text detection (), but they are not very suitable for this high accuracy required and classification task. So we designed our model for various kinds of invoices.
 Our model is based on semantic segmentation and center points prediction. It is composed of an Encoder and a Decoder. Encoder is for feature extraction, while Decoder is for pixel classification, center points prediction, and distance estimation. For most data, our model could precisely find center points. So non-maxima suppression for bounding box can be removed. We have provide pretrained models for added-value tax and taxi invoice. Lite models will be released soon.
 
-![demo](https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg)
+![demo1](https://github.com/wirustea/Fast_Invoice/master/demo/demo1.jpg)
+![demo2 deferent color means deferent class](https://github.com/wirustea/Fast_Invoice/master/demo/demo2.jpg)
 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
 
@@ -46,10 +47,12 @@ first download pretrained models, and move to folder **PROJECT_ROOT/pretrained_m
 ````bash
 python test.py --path IMAGE_PATH/VIDEO_PATH/FOLDER_PATH --model_name MODEL_NAME --pretrained_model PTH_NAME
 ````
-1. if MODEL_NAME is not given, it will use **FastInvoice_Res11** as default.
-2. if gpu is avilable, add option **--use_gpu**
-3. visulalize bounding boxes on input, add option **--visualize**
-4. you can find bounding boxes and visualized version for every image in folder **PROJECT_ROOT/result**
+1. if MODEL_NAME is not given, it will use **FastInvoice_Res11** as default
+2. **--use_gpu** if gpu is avilable
+3. **--visualize** visulalize bounding boxes on input
+4. **--echo** show details of detection
+5. **--K** limit of number of items, default to 110, you can switch to larger one if many invoices given
+6. you can find bounding boxes and visualized version for every image in folder **PROJECT_ROOT/result**
 
 if you just want to call detection function in projects
 ````python

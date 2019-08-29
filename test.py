@@ -5,7 +5,7 @@ import torch
 import os
 from PIL import Image
 import json
-
+import time
 
 ### 
 mapping = {
@@ -146,19 +146,24 @@ mapping = dict(zip(mapping.values(),mapping.keys()))
 ###
 
 class Detection():
-    def __init__(self,model_name:str,pretrained_model:str,on_gpu=False,center_points_thred=0.3,_nms_kernel=3,topK=110):
+    def __init__(self,model_name:str,pretrained_model:str,on_gpu=False,center_points_thred=0.3,_nms_kernel=3,echo=False,K=110):
         self.net = get_model(model_name,pretrained_model,on_gpu)
         self.on_gpu = on_gpu
         self.center_points_thred= center_points_thred
         self._nms_kernel=_nms_kernel
-        self.topK=topK
         self.mapping = mapping
+        self.echo = echo
+        self.K = K
 
     def _detect(self,image, draw_rects_on_image=False):
+        t0 = time.time()
         output = apply(self.net,image ,on_gpu=self.on_gpu)
+        t1 = time.time()
         cls_map, ck_map, dist_map = output['obj'][0], output['ct'][0][1], output['dist'][0]
-        dots = center_points(ck_map * (cls_map.argmax(0) != 0).float(), cls_map.argmax(0))
-
+        dots = center_points(ck_map * (cls_map.argmax(0) != 0).float(), cls_map.argmax(0),thred=self.center_points_thred,topK=self.K,kernel_size=self._nms_kernel)
+        
+        if self.echo:
+            print('%d items found'%(len(dots),))
         # distance to four corners
 
         bias = dist_map.cpu().detach().numpy()
@@ -168,6 +173,8 @@ class Detection():
 
         if draw_rects_on_image:
             original_image = image.copy()
+
+        t2 = time.time()
 
         results = {}
         for rect in rects:
@@ -192,6 +199,9 @@ class Detection():
 
             if draw_rects_on_image:
                 cv2.polylines(original_image, [np.int0(rect)], 1, random_color[cls], int(factor.min()))
+
+        if self.echo:
+            print('Time: %.3fs (detection:%.3fs; post-processing:%.3fs)'%(t2-t0,t1-t0,t2-t1))
 
         if draw_rects_on_image:
             return original_image,results
@@ -262,8 +272,11 @@ if __name__ == '__main__':
     parser.add_argument('--model_name', type=str, default='FastInvoice_Res11')
     parser.add_argument('--pretrained_model', type=str, default=None)
     parser.add_argument('--visualize',action='store_true',)
+    parser.add_argument('--center_points_thred',type=float,default=0.25)
+    parser.add_argument('--echo',action='store_true',)
+    parser.add_argument('--K',type=int,default=110)
     
     args = parser.parse_args()
 
-    detection = Detection(args.model_name, args.pretrained_model, on_gpu=args.use_gpu)
+    detection = Detection(args.model_name, args.pretrained_model, on_gpu=args.use_gpu,center_points_thred=args.center_points_thred,_nms_kernel=3,echo=args.echo,K=args.K)
     detection.detect(args.path,visualize=args.visualize)
