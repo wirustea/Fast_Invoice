@@ -8,7 +8,7 @@ Our model is based on semantic segmentation and center points prediction. It is 
 ## Demo
  Defferent color means defferent class, it can detect as many items as it can
 
-![demo1](https://github.com/wirustea/Fast_Invoice/demo/demo1.jpg)
+![demo1](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo1.jpg)
 ![demo2](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo2.jpg)
 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
