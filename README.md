@@ -36,7 +36,7 @@ on added-value tax invoice dataset
 
 | model |num classes |#Params | GFLOPs | Multi-scale | mIoU_for_Seg | Link |
 | :--: | :--: | :--: | :--: | :--: | :--: |:--: |
-| FastInvoice_Res11 | 64 | - | - | YES | 78.4% | [BaiDuYun (key:ey4g)](https://pan.baidu.com/s/1UKKf_N_uj8suse3lm2L8Mg) |
+| FastInvoice_Res11 | 64 | 57M | 55.5 | YES | 78.4% | [BaiDuYun (key:ey4g)](https://pan.baidu.com/s/1UKKf_N_uj8suse3lm2L8Mg) |
 | Lite-FastInvoice_Res11 | 64 | - | - | YES | - | - |
 
 on multi-invoice(added-value-tax and taxi) dataset
