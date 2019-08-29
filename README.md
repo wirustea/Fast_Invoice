@@ -6,7 +6,7 @@ This model is designed for information localization on **invoice-like images** w
 Our model is based on semantic segmentation and center points prediction. It is composed of an Encoder and a Decoder. Encoder is for feature extraction, while Decoder is for pixel classification, center points prediction, and distance estimation. For most data, our model could precisely find center points. So non-maxima suppression for bounding box can be removed. We have provide pretrained models for added-value tax and taxi invoice. Lite models will be released soon.
 
 ![demo1](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo1.jpg)
-![demo2 defferent color means defferent class](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo2.png)
+![demo2 defferent color means defferent class](https://github.com/wirustea/Fast_Invoice/blob/master/demo/demo2.jpg)
 
 <!-- <img src="https://github.com/wirustea/Fast_Invoice/blob/master/demo1.jpg" width = "200" height = "200"> -->
 
