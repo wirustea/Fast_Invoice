@@ -2,7 +2,7 @@
 A fast&simple model for multi-scenario multi-class invoices detection (only localization)
 
 ## Introduction
-This model is designed for information localization on **invoice-like images** which have dense, very long, blurred and overlapped text. There were many excellent models for scene text detection (), but they are not very suitable for this high accuracy required and classification task. So we designed our model for various kinds of invoices.
+This model is designed for information localization on **invoice-like images** which have dense, very long, blurred and overlapped text. There were many excellent models for scene text detection like [EAST](https://github.com/songdejia/EAST), [PixelLink](https://github.com/ZJULearning/pixel_link), [FTOS](https://github.com/jiangxiluning/FOTS.PyTorch), but they are not very suitable for this high accuracy required and classification task. So we designed our model for various kinds of invoices.
 Our model is based on semantic segmentation and center points prediction. It is composed of an Encoder and a Decoder. Encoder is for feature extraction, while Decoder is for pixel classification, center points prediction, and distance estimation. For most data, our model could precisely find center points. So non-maxima suppression for bounding box can be removed. We have provide pretrained models for added-value tax and taxi invoice. Lite models will be released soon.
 
 ## Demo
