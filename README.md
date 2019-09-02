@@ -103,5 +103,5 @@ mapping.json
     'TAG_N':N
 }
 ````
-### labeling tools (updating)
-we provide a tool for invoice data labeling
+### labeling tool
+we provide a tool for invoice data labeling [Labeling Tool](https://github.com/wirustea/labeling)
